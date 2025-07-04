@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inshort_test/src/providers/homepage_provider.dart';
 import 'package:inshort_test/src/repository/homepage/model/video_model.dart';
+import 'package:inshort_test/src/services/services_export.dart';
 import 'package:inshort_test/src/utilities/export.dart';
 
 class VideoDetailsPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class VideoDetailsPage extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 300,
+                    height: 300.toScale,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -38,7 +39,7 @@ class VideoDetailsPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 300,
+                    height: 300.toScale,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -56,8 +57,8 @@ class VideoDetailsPage extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: Container(
-                        width: 40,
-                        height: 40,
+                        width: 40.toScale,
+                        height: 40.toScale,
                         decoration: BoxDecoration(
                           color: ColorPallet.black.withValues(alpha: 0.6),
                           borderRadius: BorderRadius.circular(20),
@@ -113,7 +114,7 @@ class VideoDetailsPage extends StatelessWidget {
                   children: [
                     Text(
                       video.originalTitle,
-                      style: const TextStyle(
+                      style: ThemeService.headline5.copyWith(
                         color: ColorPallet.white,
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -122,9 +123,8 @@ class VideoDetailsPage extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       video.title,
-                      style: const TextStyle(
+                      style: ThemeService.bodyText1.copyWith(
                         color: ColorPallet.white,
-                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -139,9 +139,9 @@ class VideoDetailsPage extends StatelessWidget {
                         const SizedBox(width: 6),
                         Text(
                           video.voteAverage.toStringAsFixed(1),
-                          style: const TextStyle(
+                          style: ThemeService.bodyText1.copyWith(
                             color: ColorPallet.white,
-                            fontSize: 16,
+
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -154,9 +154,8 @@ class VideoDetailsPage extends StatelessWidget {
                         const SizedBox(width: 6),
                         Text(
                           video.releaseDate.split('-')[0],
-                          style: const TextStyle(
+                          style: ThemeService.bodyText1.copyWith(
                             color: ColorPallet.white,
-                            fontSize: 16,
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -166,11 +165,10 @@ class VideoDetailsPage extends StatelessWidget {
                           size: 16,
                         ),
                         const SizedBox(width: 6),
-                        const Text(
+                        Text(
                           '2h 15m',
-                          style: TextStyle(
+                          style: ThemeService.bodyText1.copyWith(
                             color: ColorPallet.white,
-                            fontSize: 16,
                           ),
                         ),
                       ],
@@ -185,7 +183,7 @@ class VideoDetailsPage extends StatelessWidget {
                         color: const Color(0xFF4CAF50),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
@@ -195,10 +193,9 @@ class VideoDetailsPage extends StatelessWidget {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            'Watch Movie',
-                            style: TextStyle(
+                            Strings.watchMovie,
+                            style: ThemeService.bodyText1.copyWith(
                               color: ColorPallet.white,
-                              fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -254,20 +251,20 @@ class VideoDetailsPage extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Overview
-                    const Text(
-                      'Overview',
-                      style: TextStyle(
+                    Text(
+                      Strings.overview,
+                      style: ThemeService.headline6.copyWith(
                         color: ColorPallet.white,
-                        fontSize: 20,
+
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(height: 12),
                     Text(
                       video.overview,
-                      style: const TextStyle(
+                      style: ThemeService.bodyText1.copyWith(
                         color: ColorPallet.white,
-                        fontSize: 14,
+
                         height: 1.5,
                       ),
                     ),
@@ -275,11 +272,11 @@ class VideoDetailsPage extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Additional info
-                    const Text(
-                      'Details',
-                      style: TextStyle(
+                    Text(
+                      Strings.details,
+                      style: ThemeService.headline6.copyWith(
                         color: ColorPallet.white,
-                        fontSize: 20,
+
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -314,21 +311,21 @@ class VideoDetailsPage extends StatelessWidget {
             width: 100,
             child: Text(
               label,
-              style: const TextStyle(
+              style: ThemeService.bodyText1.copyWith(
                 color: ColorPallet.white,
-                fontSize: 14,
+
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
-          const Text(
+          Text(
             ': ',
-            style: TextStyle(color: ColorPallet.white, fontSize: 14),
+            style: ThemeService.bodyText1.copyWith(color: ColorPallet.white),
           ),
           Expanded(
             child: Text(
               value,
-              style: const TextStyle(color: ColorPallet.white, fontSize: 14),
+              style: ThemeService.bodyText1.copyWith(color: ColorPallet.white),
             ),
           ),
         ],

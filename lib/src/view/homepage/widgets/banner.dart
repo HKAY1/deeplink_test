@@ -1,4 +1,5 @@
 import 'package:inshort_test/src/repository/homepage/model/video_model.dart';
+import 'package:inshort_test/src/services/services_export.dart';
 import 'package:inshort_test/src/utilities/export.dart';
 
 class HomeBanner extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomeBanner extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 220,
+          height: 220.toScale,
           width: double.infinity,
           margin: const EdgeInsets.symmetric(horizontal: 0),
           decoration: BoxDecoration(
@@ -36,25 +37,23 @@ class HomeBanner extends StatelessWidget {
             children: [
               Text(
                 video.title,
-                style: const TextStyle(
+                style: ThemeService.headline4.copyWith(
                   color: ColorPallet.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 26,
                   shadows: [Shadow(blurRadius: 8, color: ColorPallet.black)],
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.toScale),
               Row(
                 children: [
                   const Icon(Icons.star, color: ColorPallet.rating, size: 18),
                   const SizedBox(width: 4),
                   Text(
                     video.voteAverage.toStringAsFixed(1),
-                    style: const TextStyle(
+                    style: ThemeService.bodyText1.copyWith(
                       color: ColorPallet.white,
-                      fontSize: 15,
                     ),
                   ),
                   SizedBox(width: 20.toScale),
@@ -66,9 +65,8 @@ class HomeBanner extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     video.releaseDate.split('-').first,
-                    style: const TextStyle(
+                    style: ThemeService.bodyText2.copyWith(
                       color: ColorPallet.white,
-                      fontSize: 13,
                     ),
                   ),
                 ],

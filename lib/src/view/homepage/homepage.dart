@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:inshort_test/src/services/services_export.dart';
 import 'package:inshort_test/src/utilities/export.dart';
 import 'package:inshort_test/src/view/homepage/widgets/banner.dart';
 import 'package:inshort_test/src/providers/homepage_provider.dart';
@@ -18,12 +19,11 @@ class Homepage extends ConsumerWidget {
         appBar: AppBar(
           backgroundColor: ColorPallet.black,
           elevation: 0,
-          title: const Text(
-            "InShort Movies",
-            style: TextStyle(
+          title: Text(
+            Strings.homePagetitle,
+            style: ThemeService.headline5.copyWith(
               color: ColorPallet.white,
               fontWeight: FontWeight.bold,
-              fontSize: 22,
             ),
           ),
           centerTitle: true,
@@ -51,25 +51,24 @@ class Homepage extends ConsumerWidget {
                     prefixWidget: Icon(Icons.search, color: ColorPallet.black),
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8.toScale),
                 // Hero Banner
                 if (notifier.nowPlayingVideos.isNotEmpty &&
                     notifier.isNowPlayingLoading == false)
                   HomeBanner(video: notifier.nowPlayingVideos[0]),
                 const SizedBox(height: 28),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Now Playing",
-                    style: TextStyle(
+                    Strings.nowPlaying,
+                    style: ThemeService.headline5.copyWith(
                       color: ColorPallet.white,
-                      fontSize: 22,
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
                     ),
                   ),
                 ),
-                const SizedBox(height: 14),
+                SizedBox(height: 14.toScale),
                 Consumer(
                   builder: (context, ref, child) {
                     if (notifier.isNowPlayingLoading) {
@@ -80,15 +79,17 @@ class Homepage extends ConsumerWidget {
                       );
                     }
                     if (notifier.nowPlayingVideos.isEmpty) {
-                      return const Center(
+                      return Center(
                         child: Text(
-                          'No videos available',
-                          style: TextStyle(color: ColorPallet.white),
+                          Strings.noMovie,
+                          style: ThemeService.bodyText1.copyWith(
+                            color: ColorPallet.white,
+                          ),
                         ),
                       );
                     }
                     return SizedBox(
-                      height: 220,
+                      height: 220.toScale,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -101,20 +102,19 @@ class Homepage extends ConsumerWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 32),
-                const Padding(
+                SizedBox(height: 32.toScale),
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Trending",
-                    style: TextStyle(
+                    Strings.trending,
+                    style: ThemeService.headline5.copyWith(
                       color: ColorPallet.white,
-                      fontSize: 22,
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
                     ),
                   ),
                 ),
-                const SizedBox(height: 14),
+                SizedBox(height: 14.toScale),
                 Consumer(
                   builder: (context, ref, child) {
                     final notifier = ref.watch(homepageProvider);
@@ -126,15 +126,17 @@ class Homepage extends ConsumerWidget {
                       );
                     }
                     if (notifier.trendingVideos.isEmpty) {
-                      return const Center(
+                      return Center(
                         child: Text(
-                          'No videos available',
-                          style: TextStyle(color: ColorPallet.white),
+                          Strings.noMovie,
+                          style: ThemeService.bodyText1.copyWith(
+                            color: ColorPallet.white,
+                          ),
                         ),
                       );
                     }
                     return SizedBox(
-                      height: 220,
+                      height: 220.toScale,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         padding: const EdgeInsets.symmetric(horizontal: 20),

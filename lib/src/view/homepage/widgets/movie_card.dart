@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inshort_test/src/providers/homepage_provider.dart';
 import 'package:inshort_test/src/repository/homepage/model/video_model.dart';
+import 'package:inshort_test/src/services/theme_service.dart';
 import 'package:inshort_test/src/utilities/export.dart';
 
 class MovieCard extends StatelessWidget {
@@ -18,7 +19,7 @@ class MovieCard extends StatelessWidget {
         );
       },
       child: Container(
-        width: 150,
+        width: 150.toScale,
         margin: const EdgeInsets.only(right: 16, top: 8, bottom: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -55,10 +56,9 @@ class MovieCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       video.title,
-                      style: const TextStyle(
+                      style: ThemeService.bodyText1.copyWith(
                         color: ColorPallet.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
                         shadows: [
                           Shadow(blurRadius: 6, color: ColorPallet.black),
                         ],
@@ -77,7 +77,7 @@ class MovieCard extends StatelessWidget {
                         const SizedBox(width: 3),
                         Text(
                           video.voteAverage.toStringAsFixed(1),
-                          style: const TextStyle(
+                          style: ThemeService.bodyText2.copyWith(
                             color: ColorPallet.white,
                             fontSize: 12,
                           ),
@@ -91,9 +91,8 @@ class MovieCard extends StatelessWidget {
                         const SizedBox(width: 3),
                         Text(
                           video.releaseDate.split('-').first,
-                          style: const TextStyle(
+                          style: ThemeService.bodyText2.copyWith(
                             color: ColorPallet.white,
-                            fontSize: 11,
                           ),
                         ),
                       ],

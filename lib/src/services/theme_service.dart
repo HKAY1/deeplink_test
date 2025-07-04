@@ -107,7 +107,7 @@ class ThemeService extends StateNotifier<ThemeMode> {
   );
 
   static const TextStyle bodyText2 = TextStyle(
-    fontSize: 14,
+    fontSize: 12,
     color: ColorPallet.textColor1,
     fontWeight: FontWeight.w600,
     fontFamily: 'NunitoSans',
@@ -149,5 +149,6 @@ class ThemeService extends StateNotifier<ThemeMode> {
   );
 }
 
-final themeService =
-    StateNotifierProvider<ThemeService, ThemeMode>((ref) => ThemeService._());
+final themeService = StateNotifierProvider<ThemeService, ThemeMode>(
+  (ref) => ThemeService._(),
+);
